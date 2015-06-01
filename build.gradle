@@ -1,0 +1,81 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+ext{
+    compileSdkVersion = 21
+    minSdkVersion = 15
+    targetSdkVersion = 21
+
+    buildToolsVersion = '22.0.1'
+    androidGradleVersion = '1.2.3'
+
+    daggerVersion = '2.0'
+    daggerCompilerVersion = '2.0'
+    butterKnifeVersion = '6.1.0'
+
+
+    retroLambdaVersion = '3.1.0'
+    rxJavaVersion = '1.0.9'
+    rxAndroidVersion = '0.24.0'
+    javaxAnnotationVersion = '10.0-b28'
+
+    supportAnnotationsVersion = '22.2.0'
+    supportDesignVersion = '22.2.0'
+
+    hugoVersion = '1.2.1'
+    androidAptVersion = '1.4+'
+    godotVersion = '+'
+    jsr250Version = '1.0'
+
+    supportV4 = '22.2.0'
+    supportV13 = '22.2.0'
+    appcompatVersion = '22.2.0'
+    cardViewVersion = '22.2.0'
+    recyclerViewVersion = '22.2.0'
+    paletteVersion = '22.2.0'
+
+    picassoVersion = '2.5.2'
+    retrofitVersion = '1.9.0'
+    okhttpUrlConnection = '2.3.0'
+    okhttpVersion = '2.3.0'
+
+    snappyDb = '0.5.0'
+    kryo = '2.24.0'
+
+    expandableLayout = '1.3'
+    snackbar = '2.9.1'
+    calligraphy = '2.0.2'
+    observableScrollViewVersion = '1.5.0'
+    floatingWidgets = '1.5.0@aar'
+    materialRipple = '1.0.1'
+    pdfView = '1.0.+@aar'
+    materialProgress = '1.4'
+
+    commonsIo = '2.4'
+    commonsLang = '3.1'
+    nineOlds = '2.4.0'
+
+    //test
+    junitVer = '4.12'
+    mockitoVer = '1.9.5'
+    festVer = '1.0.8'
+    robolectricVer = '3.0-rc2'
+
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}

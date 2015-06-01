@@ -1,0 +1,21 @@
+language: android
+android:
+  components:
+    - build-tools-22.0.1
+
+notifications:
+  email: false
+
+
+before_install:
+
+  # for gradle output style
+  - export TERM=dumb
+
+  # environment info
+  - chmod +x gradlew
+  - ./gradlew -v
+  - uname -a
+
+# Let's try to build...
+script: ./gradlew clean test --stacktrace

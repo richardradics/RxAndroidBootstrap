@@ -1,0 +1,67 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "me.tatarka:gradle-retrolambda:${rootProject.ext.retroLambdaVersion}"
+        classpath "com.neenbedankt.gradle.plugins:android-apt:${rootProject.ext.androidAptVersion}"
+        classpath "com.jakewharton.hugo:hugo-plugin:${rootProject.ext.hugoVersion}"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'hugo'
+
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    compile project(':commons')
+
+    compile "com.android.support:support-annotations:${rootProject.ext.supportAnnotationsVersion}"
+
+    compile "com.google.dagger:dagger:${rootProject.ext.daggerVersion}"
+    apt "com.google.dagger:dagger-compiler:${rootProject.ext.daggerCompilerVersion}"
+    provided "javax.annotation:jsr250-api:${rootProject.ext.jsr250Version}"
+
+    compile "io.reactivex:rxjava:${rootProject.ext.rxJavaVersion}"
+    compile "io.reactivex:rxandroid:${rootProject.ext.rxAndroidVersion}"
+
+    compile "com.squareup.retrofit:retrofit:${rootProject.ext.retrofitVersion}"
+    compile "com.squareup.okhttp:okhttp-urlconnection:${rootProject.ext.okhttpUrlConnection}"
+    compile "com.squareup.okhttp:okhttp:${rootProject.ext.okhttpVersion}"
+
+    compile "com.android.support:design:${rootProject.ext.supportDesignVersion}"
+}

@@ -1,0 +1,91 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "me.tatarka:gradle-retrolambda:${rootProject.ext.retroLambdaVersion}"
+        classpath "com.neenbedankt.gradle.plugins:android-apt:${rootProject.ext.androidAptVersion}"
+        classpath "com.jakewharton.hugo:hugo-plugin:${rootProject.ext.hugoVersion}"
+    }
+}
+
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'hugo'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':core')
+
+    compile "com.jakewharton:butterknife:${rootProject.ext.butterKnifeVersion}"
+    compile "com.google.dagger:dagger:${rootProject.ext.daggerVersion}"
+    apt "com.google.dagger:dagger-compiler:${rootProject.ext.daggerCompilerVersion}"
+    provided "javax.annotation:jsr250-api:${rootProject.ext.jsr250Version}"
+
+    compile "io.reactivex:rxjava:${rootProject.ext.rxJavaVersion}"
+    compile "io.reactivex:rxandroid:${rootProject.ext.rxAndroidVersion}"
+
+    compile "com.android.support:support-annotations:${rootProject.ext.supportAnnotationsVersion}"
+
+    compile "com.squareup.picasso:picasso:${rootProject.ext.picassoVersion}"
+
+    compile "com.github.ksoichiro:android-observablescrollview:${rootProject.ext.observableScrollViewVersion}"
+    compile "com.android.support:palette-v7:${rootProject.ext.paletteVersion}"
+    compile "com.android.support:cardview-v7:${rootProject.ext.cardViewVersion}"
+    compile "com.android.support:appcompat-v7:${rootProject.ext.appcompatVersion}"
+    compile "com.android.support:support-v4:${rootProject.ext.supportV4}"
+    compile "com.android.support:recyclerview-v7:${rootProject.ext.recyclerViewVersion}"
+
+    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
+    androidTestCompile 'org.assertj:assertj-core:1.6.1'
+    androidTestCompile 'com.squareup.assertj:assertj-android:1.0.0'
+    androidTestCompile "com.android.support:support-annotations:${rootProject.ext.supportAnnotationsVersion}"
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.assertj:assertj-core:1.6.1'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.richardradics.cleanrx"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'LICENSE'
+        exclude 'LICENSE.txt'
+    }
+}
+
+
