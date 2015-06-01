@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,6 +13,8 @@ import com.richardradics.cleanrx.R;
 import com.richardradics.cleanrx.di.component.ApplicationComponent;
 import com.richardradics.cleanrx.di.module.ActivityModule;
 import com.richardradics.core.navigator.Navigator;
+import com.richardradics.core.util.CommonUseCases;
+import com.richardradics.core.util.LoadAndToast;
 
 import javax.inject.Inject;
 
@@ -35,6 +38,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Inject
     protected CleanErrorHandler cleanErrorHandler;
+
+    @Inject
+    protected LoadAndToast loadAndToast;
+
+    @Inject
+    protected CommonUseCases commonUseCases;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,6 +85,19 @@ public abstract class BaseActivity extends AppCompatActivity {
             titleTextView.setText(getTitle());
             toolbar.setNavigationIcon(R.drawable.ic_backarrow);
         }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 
     protected ApplicationComponent getApplicationComponent() {

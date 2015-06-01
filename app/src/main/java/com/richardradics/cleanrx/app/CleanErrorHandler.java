@@ -2,6 +2,7 @@ package com.richardradics.cleanrx.app;
 
 import android.content.Context;
 
+import com.richardradics.cleanrx.BuildConfig;
 import com.richardradics.core.error.ErrorHandler;
 import com.richardradics.core.navigator.Navigator;
 
@@ -21,6 +22,12 @@ public class CleanErrorHandler extends ErrorHandler {
     public void handlerError(Exception e) {
         super.handlerError(e);
         showError("Error occured!");
+    }
+
+    public void logException(Exception e) {
+        if (BuildConfig.DEBUG) {
+            logError(e);
+        }
     }
 
     public void showSnackbar(String s) {

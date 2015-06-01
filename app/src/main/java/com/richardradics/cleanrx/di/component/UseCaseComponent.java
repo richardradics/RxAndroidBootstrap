@@ -12,7 +12,7 @@ import dagger.Component;
  */
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = {ActivityModule.class, UseCaseModule.class})
-public interface UseCaseComponent {
+public interface UseCaseComponent extends ActivityComponent {
     void inject(MainActivity mainActivity);
 
 }

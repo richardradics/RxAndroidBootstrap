@@ -3,7 +3,6 @@ package com.richardradics.cleanrx.ui.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.richardradics.cleanrx.R;
 import com.richardradics.cleanrx.app.BaseActivity;
@@ -37,6 +36,8 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
 
     @Inject
     MainPresenter mainPresenter;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,12 +91,12 @@ public class MainActivity extends BaseActivity implements MainView, HasComponent
 
     @Override
     public void showLoading(String message) {
-
+        loadAndToast.showLoading(message);
     }
 
     @Override
     public void hideLoading(boolean sucess) {
-
+        loadAndToast.endLoading(sucess);
     }
 
     @Override

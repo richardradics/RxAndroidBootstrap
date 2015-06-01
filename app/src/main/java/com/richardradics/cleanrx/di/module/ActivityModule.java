@@ -18,6 +18,9 @@ package com.richardradics.cleanrx.di.module;
 import android.app.Activity;
 
 import com.richardradics.cleanrx.di.PerActivity;
+import com.richardradics.core.navigator.Navigator;
+import com.richardradics.core.util.CommonUseCases;
+import com.richardradics.core.util.LoadAndToast;
 
 import dagger.Module;
 import dagger.Provides;
@@ -37,7 +40,14 @@ public class ActivityModule {
   * Expose the activity to dependents in the graph.
   */
   @Provides @PerActivity
-  Activity activity() {
+  Activity provideActivity() {
     return this.activity;
   }
+
+
+  @Provides @PerActivity
+  LoadAndToast provideLoadAndToast(CommonUseCases commonUseCases, Navigator navigator) {
+    return new LoadAndToast(this.activity, commonUseCases, navigator);
+  }
+
 }

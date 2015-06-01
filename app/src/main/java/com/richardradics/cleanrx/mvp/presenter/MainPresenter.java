@@ -41,7 +41,12 @@ public class MainPresenter extends DefaultSubscriber<List<City>> implements Pres
     }
 
     private void initView() {
-        getCitiesUseCase.execute(this);
+        try {
+            getCitiesUseCase.execute(this);
+            mainView.showLoading("Loading...");
+        }catch (Exception e){
+            cleanErrorHandler.logException(e);
+        }
     }
 
     @Override
@@ -63,6 +68,7 @@ public class MainPresenter extends DefaultSubscriber<List<City>> implements Pres
     public void onError(Throwable e) {
         super.onError(e);
         cleanErrorHandler.handlerError(new GetCitiesException());
+        mainView.hideLoading(false);
     }
 
     @Override
@@ -100,5 +106,6 @@ public class MainPresenter extends DefaultSubscriber<List<City>> implements Pres
     public void onCompleted() {
         super.onCompleted();
         cleanErrorHandler.showSnackbar("Items loaded!");
+        mainView.hideLoading(true);
     }
 }

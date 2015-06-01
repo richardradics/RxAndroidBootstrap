@@ -27,6 +27,8 @@ import com.richardradics.core.executor.PostExecutionThread;
 import com.richardradics.core.executor.ThreadExecutor;
 import com.richardradics.core.executor.UIThread;
 import com.richardradics.core.navigator.Navigator;
+import com.richardradics.core.util.CommonUseCases;
+import com.richardradics.core.util.LoadAndToast;
 
 import javax.inject.Singleton;
 
@@ -65,6 +67,12 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
+    CommonUseCases provideCommonUseCases(Context context, Navigator navigator) {
+        return new CommonUseCases(context, navigator);
+    }
+
+    @Provides
+    @Singleton
     ThreadExecutor provideThreadExecutor(JobExecutor jobExecutor) {
         return jobExecutor;
     }
@@ -83,7 +91,7 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    CleanWeatherService provideCleanWeatherService(Context context, WeatherResponseMapperImp weatherResponseMapperImp){
+    CleanWeatherService provideCleanWeatherService(Context context, WeatherResponseMapperImp weatherResponseMapperImp) {
         return new CleanWeatherService(context, weatherResponseMapperImp);
     }
 

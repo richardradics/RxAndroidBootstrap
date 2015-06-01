@@ -24,6 +24,8 @@ import com.richardradics.cleanrx.repository.CleanRepository;
 import com.richardradics.core.executor.PostExecutionThread;
 import com.richardradics.core.executor.ThreadExecutor;
 import com.richardradics.core.navigator.Navigator;
+import com.richardradics.core.util.CommonUseCases;
+import com.richardradics.core.util.LoadAndToast;
 
 import javax.inject.Singleton;
 
@@ -44,4 +46,5 @@ public interface ApplicationComponent {
   CleanRepository cleanRepository();
   Navigator navigator();
   CleanErrorHandler cleanErrorHandler();
+  CommonUseCases commonUseCases();
 }
