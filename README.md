@@ -15,7 +15,7 @@ A project which showcases usage of Dagger 2, Rxjava and retrolambda among other 
 * ErrorHandling
 * Uncaught errorhandling
 * Navigator to get current activity onscreen
-* Snackbar from Design Support Library
+* Design Support Library
 * Loading toast progress
 * Commons library with a lot of util classes and great 3rd party widgets  
 

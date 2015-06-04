@@ -60,7 +60,7 @@ public class DetailActivity extends BaseActivity implements Palette.PaletteAsync
 
         image = (ImageView) findViewById(R.id.image);
         ViewCompat.setTransitionName(image, EXTRA_IMAGE);
-        titleTextView.setText(getIntent().getStringExtra(EXTRA_TITLE));
+        collapsingToolbar.setTitle(getIntent().getStringExtra(EXTRA_TITLE));
         bitmapImageViewTarget = new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
