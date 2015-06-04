@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.richardradics.cleanrx.R;
 import com.richardradics.cleanrx.di.component.ApplicationComponent;
 import com.richardradics.cleanrx.di.module.ActivityModule;
+import com.richardradics.core.app.CoreBaseActivity;
 import com.richardradics.core.navigator.Navigator;
 import com.richardradics.core.util.CommonUseCases;
 import com.richardradics.core.util.LoadAndToast;
@@ -24,7 +25,7 @@ import butterknife.InjectView;
 /**
  * Created by radicsrichard on 15. 05. 29..
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends CoreBaseActivity {
 
     @InjectView(R.id.toolbar)
     protected Toolbar toolbar;
